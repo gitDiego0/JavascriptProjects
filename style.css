@@ -6,3 +6,46 @@
   color: #2c3e50;
   margin-top: 60px;
 }
+
+#calculator {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 32px;
+  width: 400px;
+}
+
+#screen {
+  text-align: right;
+  margin-bottom: 15px;
+  background-color: whitesmoke;
+  padding: 0.5em;
+  border-radius: 0.5em;
+}
+
+#buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 2fr);
+  gap: 0.5em;
+  /* grid-auto-rows: minmax(100px, auto); */
+}
+
+.button {
+  font-size: 32px;
+  text-decoration: none;
+  background-color: floralwhite;
+  border: none;
+  border-radius: 25px;
+  padding: 0.5em;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.button:hover {
+  opacity: 0.5;
+}
+
+.button:active {
+  transform: scale(0.75);
+}

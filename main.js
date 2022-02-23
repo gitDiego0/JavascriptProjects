@@ -17,12 +17,23 @@ document.querySelector("#app").innerHTML = `
 `;
 
 let colorCode;
-let lifes;
-let difficulty;
+let lifes = 3;
+let difficulty = "easy";
 
+const colorSelectedScreen = document.querySelector("#colorCode");
 const gameResult = document.querySelector("#gameResult");
 
 const rgbNumber = 256;
+
+const easy = document.querySelector("#easy");
+easy.addEventListener("click", () => {
+  difficulty = "easy";
+});
+
+const hard = document.querySelector("#hard");
+hard.addEventListener("click", () => {
+  difficulty = "hard";
+});
 
 const newGame = document.querySelector("#newgame");
 newGame.addEventListener("click", () => {
@@ -39,6 +50,7 @@ const randomNumber = (cuantity) => {
 
 const startGame = () => {
   const colorCodes = [{}];
+  lifes = 3;
   gameBoard.innerHTML = "";
   gameResult.innerHTML = "";
   colorCode = {
@@ -46,6 +58,7 @@ const startGame = () => {
     g: randomNumber(rgbNumber),
     b: randomNumber(rgbNumber),
   };
+  colorSelectedScreen.innerHTML = `r=${colorCode.r} g=${colorCode.g} b=${colorCode.b}`;
   const positionColorSelected = randomNumber(5);
   console.log(colorCode);
   // console.log(positionColorSelected);
@@ -92,6 +105,20 @@ const startGame = () => {
         content.b === colorCode.b
       ) {
         gameResult.innerHTML = "YOU WIN";
+      } else {
+        if (difficulty === "easy") {
+          lifes = lifes - 1;
+          console.log(lifes);
+          if (lifes <= 0) {
+            gameResult.innerHTML = "YOU LOOSE";
+          }
+        } else {
+          lifes = lifes - 2;
+          console.log(lifes);
+          if (lifes <= 0) {
+            gameResult.innerHTML = "YOU LOOSE";
+          }
+        }
       }
       console.log(content);
     });
